@@ -1,0 +1,4 @@
+date,time,transactionType,transactionCategory,transactionAmount,balance
+2024-03-09,04:46:49.012650,income,salary,12000,12000
+2024-03-09,04:47:09.693991,expense,rent,-10000,2000
+2024-03-09,05:30:37.777000,expense,entertainment,-300,1700
