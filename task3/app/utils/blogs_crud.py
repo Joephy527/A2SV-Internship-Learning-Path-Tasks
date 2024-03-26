@@ -1,4 +1,5 @@
 from datetime import datetime
+from uuid import UUID
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session, load_only
 from schema import Blog, BlogRating, BlogTag, Comment, Like, Share
@@ -39,7 +40,7 @@ def get_blogs(db: Session):
 
 
 # Get blog by ID
-def get_blog_by_id(db: Session, blog_id: int):
+def get_blog_by_id(db: Session, blog_id: UUID):
     blog_data = (
         db.query(Blog, BlogTag, BlogRating, Like, Share, Comment)
         .outerjoin(BlogTag, Blog.blog_id == BlogTag.blog_id)
@@ -95,7 +96,7 @@ def get_blog_by_title(title: str, db: Session):
 
 
 # Create new blog
-def create_blog(db: Session, blog: BlogCreate, user_id: int):
+def create_blog(db: Session, blog: BlogCreate, user_id: UUID):
     created_at = datetime.now()
     updated_at = datetime.now()
 
@@ -115,7 +116,7 @@ def create_blog(db: Session, blog: BlogCreate, user_id: int):
 
 
 # Update existing blog
-def update_blog(db: Session, blog_id: int, blog: BlogUpdate, user_id: int):
+def update_blog(db: Session, blog_id: UUID, blog: BlogUpdate, user_id: UUID):
     updated_at = datetime.now()
 
     db_blog = (
@@ -145,7 +146,7 @@ def update_blog(db: Session, blog_id: int, blog: BlogUpdate, user_id: int):
 
 
 # Delete existing blog
-def delete_blog(db: Session, blog_id: int, user_id: int):
+def delete_blog(db: Session, blog_id: UUID, user_id: UUID):
     db_blog = db.query(Blog).filter(Blog.blog_id == blog_id).first()
 
     if db_blog:

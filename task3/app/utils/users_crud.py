@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy.orm import Session, load_only
+from sqlalchemy.orm import Session
 from uuid import UUID
 
 from models.users_models import UserCreate, UserUpdate

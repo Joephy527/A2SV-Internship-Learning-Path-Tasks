@@ -1,5 +1,4 @@
 from datetime import datetime
-from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from schema import Tag
 from models.tag_models import TagCreate, TagUpdate

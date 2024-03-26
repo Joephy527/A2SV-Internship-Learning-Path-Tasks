@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from uuid import UUID
 
 from middleware import get_current_user
 from models.users_models import User
-from models.shares_models import ShareCreate
 from utils import connect_db
 from utils.shares_crud import share
 

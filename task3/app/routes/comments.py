@@ -13,24 +13,51 @@ router = APIRouter(
     tags=["comments"],
 )
 
+
 @router.post("/{blog_id}/create")
-def create_blog_comment(blog_id: UUID, comment: CommentCreate, db: Session = Depends(connect_db), current_user: User = Depends(get_current_user)):
-    return create_comment(db=db, user_id=current_user.user_id, blog_id=blog_id, comment=comment)
+def create_blog_comment(
+    blog_id: UUID,
+    comment: CommentCreate,
+    db: Session = Depends(connect_db),
+    current_user: User = Depends(get_current_user),
+):
+    return create_comment(
+        db=db, user_id=current_user.user_id, blog_id=blog_id, comment=comment
+    )
+
 
 @router.put("/{comment_id}")
-def edit_blog_comment(comment_id: UUID, comment: CommentUpdate, db: Session = Depends(connect_db), current_user: User = Depends(get_current_user)):
-    edited_comment = edit_comment(db=db, comment_id=comment_id, user_id=current_user.user_id, comment=comment)
-    
+def edit_blog_comment(
+    comment_id: UUID,
+    comment: CommentUpdate,
+    db: Session = Depends(connect_db),
+    current_user: User = Depends(get_current_user),
+):
+    edited_comment = edit_comment(
+        db=db, comment_id=comment_id, user_id=current_user.user_id, comment=comment
+    )
+
     if not edited_comment:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Comment not found")
-    
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Comment not found"
+        )
+
     return edited_comment
 
+
 @router.delete("/{comment_id}")
-def delete_blog_comment(comment_id: UUID, db: Session = Depends(connect_db), current_user: User = Depends(get_current_user)):
-    deleted_comment = delete_comment(db=db, comment_id=comment_id, user_id=current_user.user_id)
-    
+def delete_blog_comment(
+    comment_id: UUID,
+    db: Session = Depends(connect_db),
+    current_user: User = Depends(get_current_user),
+):
+    deleted_comment = delete_comment(
+        db=db, comment_id=comment_id, user_id=current_user.user_id
+    )
+
     if not deleted_comment:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Comment not found")
-    
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Comment not found"
+        )
+
     return deleted_comment
