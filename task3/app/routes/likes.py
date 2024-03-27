@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from middleware import get_current_user
-from models.users_models import User
-from schema import Blog
-from utils.likes_crud import like, unlike
-from utils import connect_db
+from app.middleware import get_current_user
+from app.models.users_models import User
+from app.schema import Blog
+from app.utils.likes_crud import like, unlike
+from app.utils import connect_db
 
 router = APIRouter(
     prefix="/likes",

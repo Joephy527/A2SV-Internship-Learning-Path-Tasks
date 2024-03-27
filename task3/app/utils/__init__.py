@@ -1,6 +1,6 @@
 from passlib.context import CryptContext
 
-from database import SessionLocal
+from app.database import SessionLocal
 
 
 def connect_db():

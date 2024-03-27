@@ -1,9 +1,10 @@
 from datetime import datetime
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
-from models.rating_models import RatingCreate, RatingUpdate
-from schema import BlogRating
 from uuid import UUID
+
+from app.models.rating_models import RatingCreate, RatingUpdate
+from app.schema import BlogRating
 
 
 def get_ratings_by_blog_id(db: Session, blog_id: UUID):

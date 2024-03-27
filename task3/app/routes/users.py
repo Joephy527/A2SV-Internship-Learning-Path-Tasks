@@ -2,11 +2,11 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from middleware import get_current_user
-from models.token_models import TokenData
-from models.users_models import User, UserCreate, UserUpdate
-from utils import connect_db
-from utils.users_crud import (
+from app.middleware import get_current_user
+from app.models.token_models import TokenData
+from app.models.users_models import User, UserCreate, UserUpdate
+from app.utils import connect_db
+from app.utils.users_crud import (
     create_user,
     delete_user,
     get_user_by_id,
@@ -88,5 +88,10 @@ def delete_existing_user(
         )
 
     db_user = delete_user(db=db, user_id=user_id)
+
+    if not db_user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+        )
 
     return db_user

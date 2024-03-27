@@ -2,8 +2,9 @@ from datetime import datetime
 from uuid import UUID
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session, load_only
-from schema import Blog, BlogRating, BlogTag, Comment, Like, Share
-from models.blogs_models import BlogCreate, BlogUpdate
+
+from app.models.blogs_models import BlogCreate, BlogUpdate
+from app.schema import Blog, BlogRating, BlogTag, Comment, Like, Share
 
 
 # Get all blogs

@@ -1,16 +1,20 @@
+import os
+import sys
+from dotenv import load_dotenv
 from fastapi import FastAPI
+import uvicorn
 
-from routes.blogs import router as blogs_router
-from routes.blog_tags import router as blog_tags_router
-from routes.comments import router as comments_router
-from routes.followers import router as followers_router
-from routes.likes import router as likes_router
-from routes.login import router as login_router
-from routes.ratings import router as ratings_router
-from routes.search import router as search_router
-from routes.shares import router as shares_router
-from routes.tags import router as tags_router
-from routes.users import router as users_router
+from app.routes.blogs import router as blogs_router
+from app.routes.blog_tags import router as blog_tags_router
+from app.routes.comments import router as comments_router
+from app.routes.followers import router as followers_router
+from app.routes.likes import router as likes_router
+from app.routes.login import router as login_router
+from app.routes.ratings import router as ratings_router
+from app.routes.search import router as search_router
+from app.routes.shares import router as shares_router
+from app.routes.tags import router as tags_router
+from app.routes.users import router as users_router
 
 app = FastAPI()
 
@@ -25,3 +29,11 @@ app.include_router(search_router)
 app.include_router(shares_router)
 app.include_router(tags_router)
 app.include_router(users_router)
+
+# if __name__ == "main":
+#     load_dotenv()
+
+#     # if len(sys.argv) > 1:
+#     #     os.environ["ENVIRONMENT"] = sys.argv[1]
+
+#     uvicorn.run("main:app", host="0.0.0.0", reload=True, port=8080)

@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from middleware import get_current_user_role
-from models.tag_models import TagCreate, TagUpdate, Tag
-from utils import connect_db
-from utils.tags_crud import (
+from app.middleware import get_current_user_role
+from app.models.tag_models import TagCreate, TagUpdate, Tag
+from app.utils import connect_db
+from app.utils.tags_crud import (
     create_a_tag,
     delete_existing_tag,
     edit_tag,

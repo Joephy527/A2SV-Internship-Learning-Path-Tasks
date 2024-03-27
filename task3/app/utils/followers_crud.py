@@ -1,8 +1,9 @@
 from datetime import datetime
 from fastapi import HTTPException, status
-from schema import Follower
 from sqlalchemy.orm import Session
 from uuid import UUID
+
+from app.schema import Follower
 
 
 def follow(db: Session, follower_id: UUID, followed_id: UUID):

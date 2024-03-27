@@ -1,15 +1,20 @@
 from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
-
-import schema
-from middleware import get_current_user
-from models.bolg_tags_models import BlogTagBase, BlogTagCreate, BlogTag, BlogTagUpdate
-from models.users_models import User
-from schema import Blog
 from sqlalchemy.orm import Session
-from utils import connect_db
-from utils.tags_crud import get_tag_by_tag_name
-from utils.blog_tag_crud import (
+
+import app.schema as schema
+from app.middleware import get_current_user
+from app.models.bolg_tags_models import (
+    BlogTagBase,
+    BlogTagCreate,
+    BlogTag,
+    BlogTagUpdate,
+)
+from app.models.users_models import User
+from app.schema import Blog
+from app.utils import connect_db
+from app.utils.tags_crud import get_tag_by_tag_name
+from app.utils.blog_tag_crud import (
     create_a_blog_tag,
     get_blog_tags,
     update_a_blog_tag,

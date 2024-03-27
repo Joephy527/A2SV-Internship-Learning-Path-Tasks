@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from middleware import get_current_user
-from models.users_models import User
-from utils import connect_db
-from utils.shares_crud import share
+from app.middleware import get_current_user
+from app.models.users_models import User
+from app.utils import connect_db
+from app.utils.shares_crud import share
 
 router = APIRouter(
     prefix="/shares",

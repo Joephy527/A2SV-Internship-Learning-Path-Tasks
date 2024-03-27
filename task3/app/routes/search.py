@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from schema import Blog, BlogTag, User
 from sqlalchemy.orm import Session
-from utils.blog_tag_crud import get_blog_tags_by_tag
-from utils import connect_db
+
+from app.schema import Blog, BlogTag, User
+from app.utils import connect_db
 
 router = APIRouter(
     prefix="/search",

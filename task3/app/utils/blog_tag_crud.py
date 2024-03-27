@@ -1,8 +1,9 @@
 from datetime import datetime
-from models.bolg_tags_models import BlogTagCreate, BlogTag, BlogTagUpdate
-from schema import BlogTag
 from sqlalchemy.orm import Session
 from uuid import UUID
+
+from app.models.bolg_tags_models import BlogTagCreate, BlogTag, BlogTagUpdate
+from app.schema import BlogTag
 
 
 def get_blog_tags(db: Session, blog_id: UUID):

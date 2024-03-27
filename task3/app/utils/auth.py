@@ -4,9 +4,9 @@ from fastapi import Depends
 from sqlalchemy.orm import Session
 from jose import jwt
 
-from config import ALGORITHM, SECRET_KEY
-from utils import connect_db, verify_password
-from utils.users_crud import get_user_by_username
+from app.config import ALGORITHM, SECRET_KEY
+from app.utils import connect_db, verify_password
+from app.utils.users_crud import get_user_by_username
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):

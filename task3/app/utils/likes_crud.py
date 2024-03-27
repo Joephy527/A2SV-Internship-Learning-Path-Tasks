@@ -1,7 +1,8 @@
 from datetime import datetime
-from schema import Like
 from sqlalchemy.orm import Session
 from uuid import UUID
+
+from app.schema import Like
 
 
 def like(db: Session, user_id: UUID, blog_id: UUID):

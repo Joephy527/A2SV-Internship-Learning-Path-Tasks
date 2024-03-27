@@ -3,7 +3,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
-from database import Base, engine
+from app.database import Base, engine
 
 
 class User(Base):

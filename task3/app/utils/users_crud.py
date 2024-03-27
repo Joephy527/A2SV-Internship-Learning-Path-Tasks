@@ -2,9 +2,9 @@ from datetime import datetime
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from models.users_models import UserCreate, UserUpdate
-from schema import User
-from utils import hash_password
+from app.models.users_models import UserCreate, UserUpdate
+from app.schema import User
+from app.utils import hash_password
 
 
 def get_user_by_id(db: Session, user_id: UUID):
@@ -65,11 +65,11 @@ def update_user(db: Session, user_id: UUID, user: UserUpdate):
     return db_user
 
 
-# Delete existing user
 def delete_user(db: Session, user_id: UUID):
     db_user = db.query(User).filter(User.user_id == user_id).first()
 
-    db.delete(db_user)
-    db.commit()
+    if db_user:
+        db.delete(db_user)
+        db.commit()
 
     return db_user

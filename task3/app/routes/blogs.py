@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from middleware import get_current_user
-from models.blogs_models import Blog, BlogCreate, BlogUpdate
-from models.users_models import User
-from utils import connect_db
-from utils.blogs_crud import (
+from app.middleware import get_current_user
+from app.models.blogs_models import Blog, BlogCreate, BlogUpdate
+from app.models.users_models import User
+from app.utils import connect_db
+from app.utils.blogs_crud import (
     create_blog,
     delete_blog,
     get_blog_by_id,

@@ -1,7 +1,8 @@
 from datetime import datetime
 from sqlalchemy.orm import Session
-from schema import Tag
-from models.tag_models import TagCreate, TagUpdate
+
+from app.schema import Tag
+from app.models.tag_models import TagCreate, TagUpdate
 
 
 def get_tag_by_tag_name(tag_name: str, db: Session):

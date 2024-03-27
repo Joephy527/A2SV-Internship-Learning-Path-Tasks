@@ -1,7 +1,8 @@
 from datetime import datetime
-from schema import Share
 from sqlalchemy.orm import Session
 from uuid import UUID
+
+from app.schema import Share
 
 
 def share(db: Session, user_id: UUID, blog_id: UUID):

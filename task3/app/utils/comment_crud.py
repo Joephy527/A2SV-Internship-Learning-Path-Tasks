@@ -1,10 +1,10 @@
 from datetime import datetime
 from fastapi import HTTPException, status
-from schema import Comment
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from models.comments_models import CommentCreate, CommentUpdate
+from app.models.comments_models import CommentCreate, CommentUpdate
+from app.schema import Comment
 
 
 def create_comment(db: Session, user_id: UUID, blog_id: UUID, comment: CommentCreate):
