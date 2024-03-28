@@ -1,7 +1,5 @@
 import uuid
-from app.models.users_models import UserCreate, UserUpdate
-from app.utils.users_crud import create_user
-from app.utils.auth import create_access_token
+from app.models.users_models import UserUpdate
 
 
 def test_user_create(client):
@@ -22,6 +20,18 @@ def test_user_create(client):
     response_json = response.json()
 
     assert response_json["username"] == "test create"
+
+
+def test_user_login(client, create_test_user):
+    response = client.post(
+        "/login", data={"username": "test_user", "password": "testpassword"}
+    )
+
+    assert response.status_code == 200
+
+    response_json = response.json()
+
+    assert response_json["token_type"] == "bearer"
 
 
 def test_user_create_existing_username(client):

@@ -11,6 +11,8 @@ from app.main import app
 from app.utils.users_crud import create_user
 from app.models.users_models import UserCreate
 from app.utils.auth import create_access_token
+from app.models.blogs_models import BlogCreate
+from app.utils.blogs_crud import create_blog
 
 load_dotenv()
 
@@ -49,5 +51,62 @@ def create_test_user(db_session):
 
 
 @pytest.fixture(scope="module")
+def create_test_user_for_tag(db_session):
+    user_data = UserCreate(
+        username="test_user_for_tag",
+        email="test_for_tag@example.com",
+        name="Test User",
+        password="testpassword",
+        role="admin",
+        bio="testbio",
+        profile_picture="testprofile",
+    )
+    return create_user(db=db_session, user=user_data)
+
+
+@pytest.fixture(scope="module")
+def create_test_user_for_tag_not_admin(db_session):
+    user_data = UserCreate(
+        username="test_user_for_tag_not_admin",
+        email="test_for_tag_not_admin@example.com",
+        name="Test User",
+        password="testpassword",
+        role="user",
+        bio="testbio",
+        profile_picture="testprofile",
+    )
+    return create_user(db=db_session, user=user_data)
+
+
+@pytest.fixture(scope="module")
+def create_test_user_for_blog(db_session):
+    user_data = UserCreate(
+        username="test_user_for_blog",
+        email="test_for_blog@example.com",
+        name="Test User",
+        password="testpassword",
+        role="admin",
+        bio="testbio",
+        profile_picture="testprofile",
+    )
+    return create_user(db=db_session, user=user_data)
+
+
+@pytest.fixture(scope="module")
 def current_user():
     return create_access_token(data={"sub": "test_user"})
+
+
+@pytest.fixture(scope="module")
+def current_user_for_tag():
+    return create_access_token(data={"sub": "test_user_for_tag"})
+
+
+@pytest.fixture(scope="module")
+def current_user_for_tag_not_admin():
+    return create_access_token(data={"sub": "test_user_for_tag_not_admin"})
+
+
+@pytest.fixture(scope="module")
+def current_user_for_blog():
+    return create_access_token(data={"sub": "test_user_for_blog"})

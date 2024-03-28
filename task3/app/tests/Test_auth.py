@@ -6,10 +6,6 @@ from jose import jwt
 from app.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 from app.utils.auth import create_access_token
 
-load_dotenv()
-
-TEST_SQLALCHEMY_DATABASE_URL = os.getenv("TEST_SQLALCHEMY_DATABASE_URL")
-
 
 def test_create_access_token(db_session):
     access_token = create_access_token(data={"sub": "test_user"})
