@@ -12,16 +12,6 @@ def get_tag_by_tag_name(tag_name: str, db: Session):
 
 
 def create_a_tag(db: Session, tag_data: TagCreate):
-    db_tag = Tag(**tag_data.model_dump())
-
-    db.add(db_tag)
-    db.commit()
-    db.refresh(db_tag)
-
-    return db_tag
-
-
-def create_a_tag(db: Session, tag_data: TagCreate):
     created_at = datetime.now()
     updated_at = datetime.now()
 
