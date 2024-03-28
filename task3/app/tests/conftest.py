@@ -93,6 +93,20 @@ def create_test_user_for_blog(db_session):
 
 
 @pytest.fixture(scope="module")
+def create_test_user_for_blog_not_owner(db_session):
+    user_data = UserCreate(
+        username="test_user_for_blog_not_owner",
+        email="test_for_blog_not_owner@example.com",
+        name="Test User",
+        password="testpassword",
+        role="admin",
+        bio="testbio",
+        profile_picture="testprofile",
+    )
+    return create_user(db=db_session, user=user_data)
+
+
+@pytest.fixture(scope="module")
 def current_user():
     return create_access_token(data={"sub": "test_user"})
 
@@ -110,3 +124,8 @@ def current_user_for_tag_not_admin():
 @pytest.fixture(scope="module")
 def current_user_for_blog():
     return create_access_token(data={"sub": "test_user_for_blog"})
+
+
+@pytest.fixture(scope="module")
+def current_user_for_blog_not_owner():
+    return create_access_token(data={"sub": "test_user_for_blog_not_owner"})
