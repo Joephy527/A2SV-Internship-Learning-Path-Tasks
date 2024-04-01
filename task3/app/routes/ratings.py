@@ -33,7 +33,7 @@ def create_rating_for_blog(
     if db_rating:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="You've already rated this blogm try updating your rating",
+            detail="You've already rated this blog try updating your rating",
         )
 
     rating = create_rating(
