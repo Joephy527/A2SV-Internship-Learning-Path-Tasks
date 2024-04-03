@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy.orm import Session
 from uuid import UUID
 
-from app.models.bolg_tags_models import BlogTagCreate, BlogTag, BlogTagUpdate
+from app.models.blog_tags_models import BlogTagCreate, BlogTag, BlogTagUpdate
 from app.schema import BlogTag
 
 
