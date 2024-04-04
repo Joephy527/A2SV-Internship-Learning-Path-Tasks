@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 import app.schema as schema
 from app.middleware import get_current_user
-from app.models.bolg_tags_models import (
+from app.models.blog_tags_models import (
     BlogTagBase,
     BlogTagCreate,
     BlogTag,

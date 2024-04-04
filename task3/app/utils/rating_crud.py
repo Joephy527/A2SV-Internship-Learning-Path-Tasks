@@ -40,12 +40,6 @@ def update_rating(db: Session, blog_id: UUID, rating_data: RatingUpdate, user_id
 
     # Update the rating
     if db_rating:
-        if db_rating.user_id != user_id:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="You can not change other user's ratings",
-            )
-
         db_rating.rating = rating_data.rating
         db_rating.updated_at = rating_data.updated_at
 
