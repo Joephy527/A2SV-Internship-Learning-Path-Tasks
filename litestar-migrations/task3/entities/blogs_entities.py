@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
@@ -33,6 +34,7 @@ class BlogUpdate(
     content: Optional[str] = None
 
 
+@dataclass(slots=True)
 class Blog(BlogBase):
     """A struct describing a blog entity"""
 
